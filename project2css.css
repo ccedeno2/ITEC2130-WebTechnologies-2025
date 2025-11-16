@@ -1,0 +1,193 @@
+/* 
+
+Project 2 - Online Resume (ITEC 2130)
+
+Caleb Cedeno - Project 2 Style Sheet
+
+*/
+
+/* CSS Reset (minimal) */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+/* Design Tokens */
+:root{
+  --bg: #f7f7f9;
+  --card: #ffffff;
+  --ink: #222222;
+  --muted: #666a73;
+  --accent: #0b5ed7;
+  --accent-hover: #084bb0;
+  --border: #e5e7eb;
+  --radius: 10px;
+  --container: 1100px;
+  --shadow: 0 6px 16px rgba(17, 24, 39, 0.06);
+  --shadow-soft: 0 2px 8px rgba(17, 24, 39, 0.05);
+}
+
+/* Base Typography & Links */
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.6;
+}
+a{
+  color: var(--accent);
+  text-decoration: none;
+  transition: color .2s ease, background-color .2s ease;
+}
+a:hover{ color: var(--accent-hover); text-decoration: underline; }
+
+/* Page Frame */
+#container{
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 1rem 2rem;
+}
+
+/* Header */
+header{
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  margin: 0 -1rem;   /* bleed to edges on small screens */
+  padding: 1rem;
+}
+header h1{
+  margin: 0;
+  font-size: 1.6rem;
+  letter-spacing: .2px;
+}
+
+/* 2-Column Layout Wrapper
+   Mobile-first: single column.
+   Tablet/Desktop: grid with nav left, main right.
+*/
+.layout{
+  display: grid;
+  grid-template-columns: 1fr; /* mobile: single column */
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Left Navigation */
+nav{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: 1rem;
+}
+nav h2{
+  margin: 0 0 .5rem;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--muted);
+}
+nav ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+nav li{ margin: .5rem 0; }
+nav a{
+  display: block;
+  padding: .45rem .6rem;
+  border-radius: 8px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: background-color .2s ease, border-color .2s ease, transform .05s ease;
+}
+nav a:hover{
+  background: #f1f5ff;
+  border-color: #dbe7ff;
+  text-decoration: none;
+}
+nav a:active{ transform: translateY(1px); }
+
+/* Main Content Card */
+main{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+}
+main h2{
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+main section{ margin-bottom: 1.5rem; }
+.subtle{ color: var(--muted); }
+
+/* Simple 2-col utility for contact area */
+.grid-2{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .75rem;
+}
+
+/* Skill "pills" */
+.pill{
+  display: inline-block;
+  padding: .25rem .6rem;
+  margin: .2rem .3rem .2rem 0;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: .95rem;
+  background: #fafafa;
+}
+
+/* Footer */
+footer{
+  margin-top: 1rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: .95rem;
+}
+footer a{ font-weight: 600; }
+footer img{ vertical-align: middle; }
+
+/* Responsive Profile Photo
+   Add <img class="profile-photo" src="images/your-photo.jpg" alt="Caleb Cedeno headshot">
+   inside the Contact section. It will resize by screen width.
+*/
+.profile-photo{
+  display: block;
+  width: 120px;
+  max-width: 40%;
+  height: auto;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  margin: .25rem 0 .5rem;
+}
+
+/* Breakpoints */
+
+/* Tablet: enhance spacing; keep single-column layout per spec */
+@media (min-width: 768px) and (max-width: 1023.98px){
+  #container{ padding: 0 1.25rem 2rem; }
+  .grid-2{ grid-template-columns: 1fr 1fr; }
+  .profile-photo{ width: 140px; max-width: 100%; }
+}
+
+/* Desktop: switch to two-column structure */
+@media (min-width: 1024px){
+  #container{ padding: 0 1.5rem 2rem; }
+  .layout{
+    grid-template-columns: 260px 1fr;  /* nav | main */
+    align-items: start;
+  }
+  .grid-2{ grid-template-columns: 1fr 1fr; }
+  .profile-photo{ width: 160px; }
+}
+
+
+footer {
+    text-align: center;
+}
